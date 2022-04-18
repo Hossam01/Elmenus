@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 data class TagsListDto(
 
 	@field:SerializedName("tags")
-	val tags: List<TagDto?>? = null
+	val tags: List<TagDto>
 )
 
 data class TagDto(
 
 	@field:SerializedName("photoURL")
-	val photoURL: String? = null,
+	val photoURL: String,
 
 	@field:SerializedName("tagName")
-	val tagName: String? = null
+	val tagName: String
 )

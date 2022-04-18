@@ -7,7 +7,23 @@ object Versions{
     val material="1.5.0"
     val constraintlayout="2.1.3"
     val junit="4.+"
-    val hilt="2.28-alpha"
+    val junittestimple="1.1.3"
+    val espresso="3.4.0"
+    val hilt="2.38.1"
+    val hilttest="2.33-beta"
+    val viewModelLifeCycle="2.2.0"
+    val coroutines="1.4.2"
+    val ActivityKTX="1.1.0"
+    val hiltRule="1.4.0-alpha05"
+    val hiltViewModel="1.0.0-alpha01"
+    val retrofit="2.6.0"
+    val interceptor="4.5.0"
+    val glide="4.12.0"
+    val leakcanary="2.7"
+    val truth="1.0.1"
+    val room="2.3.0"
+    val paging="3.1.1"
+
 
 }
 object Deps{
@@ -19,6 +35,33 @@ object Deps{
     val material="com.google.android.material:material:${Versions.material}"
     val constraintlayout="androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     val junit="junit:junit:${Versions.junit}"
+    val junittestimple="androidx.test.ext:junit:${Versions.junittestimple}"
+    val espresso="androidx.test.espresso:espresso-core:${Versions.espresso}"
+    val viewModelLifeCycle="androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModelLifeCycle}"
+    val viewModelLifeCycleRuntime="androidx.lifecycle:lifecycle-runtime-ktx:${Versions.viewModelLifeCycle}"
+    val ActivityKTX= "androidx.activity:activity-ktx:${Versions.ActivityKTX}"
+    val coroutinesCore="org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    val coroutinesRuntime="org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    val hiltAndroid="com.google.dagger:hilt-android:${Versions.hilt}"
+    val hilttest="com.google.dagger:hilt-android-testing:${Versions.hilttest}"
+    val hilttestCompiler="com.google.dagger:hilt-android-compiler:${Versions.hilttest}"
+    val hiltRule="androidx.test:rules:${Versions.hiltRule}"
+    val hiltCompiler="com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    val hiltViewModel="androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModel}"
+    val hiltkapt="androidx.hilt:hilt-compiler:${Versions.hiltViewModel}"
+    val retrofit="com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    val converter_gson="com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    val interceptor="com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
+    val glide="com.github.bumptech.glide:glide:${Versions.glide}"
+    val glide_compiler="com.github.bumptech.glide:compiler:${Versions.glide}"
+    val leakcanary="com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}"
+    val truth="com.google.truth:truth:${Versions.truth}"
+    val room="androidx.room:room-runtime:${Versions.room}"
+    val room_compiler="androidx.room:room-compiler:${Versions.room}"
+    val paging="androidx.paging:paging-runtime-ktx:${Versions.paging}"
+
+
+
 }
 
 object VersionConfig{

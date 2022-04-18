@@ -2,11 +2,12 @@ package com.example.elmenus.domain.di
 
 import com.example.elmenus.BuildConfig
 import com.example.elmenus.data.remote.webservice.WebService
+import com.example.elmenus.data.repository.DataRepoImpl
 import com.example.elmenus.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,11 +15,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
+
     @Provides
     fun provideBaseUrl() = Constants.BASE_URL
-
 
     @Singleton
     @Provides
