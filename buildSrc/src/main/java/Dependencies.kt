@@ -1,6 +1,6 @@
 object Versions{
 
-    val kotlin="1.6.0"
+    val kotlin="1.4.30"
     val gradle="7.0.3"
     val core_ktx="1.7.0"
     val appcompat="1.4.1"
@@ -9,7 +9,7 @@ object Versions{
     val junit="4.+"
     val junittestimple="1.1.3"
     val espresso="3.4.0"
-    val hilt="2.38.1"
+    val hilt="2.28-alpha"
     val hilttest="2.33-beta"
     val viewModelLifeCycle="2.2.0"
     val coroutines="1.4.2"
@@ -23,6 +23,7 @@ object Versions{
     val truth="1.0.1"
     val room="2.3.0"
     val paging="3.1.1"
+    val navigation="2.3.5"
 
 
 }
@@ -59,8 +60,8 @@ object Deps{
     val room="androidx.room:room-runtime:${Versions.room}"
     val room_compiler="androidx.room:room-compiler:${Versions.room}"
     val paging="androidx.paging:paging-runtime-ktx:${Versions.paging}"
-
-
+    val navigation="androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    val navigationUI="androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 
 }
 

@@ -1,6 +1,7 @@
 package com.example.elmenus.data.local.model
 
 data class ItemListDto(
+
 	val items: List<ItemDto>
 )
 

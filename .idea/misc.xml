@@ -23,7 +23,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/testq/Elmenus/app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
+        <entry key="..\:/testq/Elmenus/app/src/main/res/layout/detail_fragment.xml" value="0.35208333333333336" />
+        <entry key="..\:/testq/Elmenus/app/src/main/res/layout/home_fragment.xml" value="0.35208333333333336" />
+        <entry key="..\:/testq/Elmenus/app/src/main/res/layout/items.xml" value="0.19583333333333333" />
         <entry key="..\:/testq/Elmenus/app/src/main/res/layout/tag_item.xml" value="0.19739583333333333" />
+        <entry key="..\:/testq/Elmenus/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21197916666666666" />
       </map>
     </option>
   </component>

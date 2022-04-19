@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id "kotlin-parcelize"
+
 }
 
 android {
@@ -17,6 +19,7 @@ android {
         multiDexEnabled = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -96,6 +99,18 @@ dependencies {
 
 
     implementation Deps.paging
+
+    implementation Deps.navigation
+    implementation Deps.navigationUI
+
+
+
+
+
+
+
+
+
 
 
 
