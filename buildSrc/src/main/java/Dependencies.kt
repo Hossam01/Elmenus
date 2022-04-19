@@ -57,6 +57,7 @@ object Deps{
     val glide_compiler="com.github.bumptech.glide:compiler:${Versions.glide}"
     val leakcanary="com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}"
     val truth="com.google.truth:truth:${Versions.truth}"
+
     val room="androidx.room:room-runtime:${Versions.room}"
     val room_compiler="androidx.room:room-compiler:${Versions.room}"
     val paging="androidx.paging:paging-runtime-ktx:${Versions.paging}"

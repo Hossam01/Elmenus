@@ -103,6 +103,8 @@ dependencies {
     implementation Deps.navigation
     implementation Deps.navigationUI
 
+    implementation "androidx.room:room-ktx:2.3.0"
+
 
 
 
