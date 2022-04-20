@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide
 import com.example.elmenus.R
 import com.example.elmenus.data.remote.dto.ItemDto
 import com.example.elmenus.databinding.ItemsBinding
+import com.example.elmenus.domain.usecase.LoadPhoto
+import com.example.elmenus.domain.usecase.LoadPhotoUseCase
 
 class ItemAdapter :
     RecyclerView.Adapter<ItemAdapter.ItemHolder>() {
@@ -53,7 +55,8 @@ class ItemAdapter :
         fun bind(itemDto: ItemDto){
             itemBinding.itemName.text=itemDto.name
             itemBinding.itemDescription.text=itemDto.description
-            Glide.with(itemView.context).load(itemDto.photoUrl).into(itemBinding.itemImage)
+            val loadPhoto = LoadPhoto()
+            loadPhoto.invoke(itemBinding.itemImage,itemDto.photoUrl,itemView.context)
         }
     }
 

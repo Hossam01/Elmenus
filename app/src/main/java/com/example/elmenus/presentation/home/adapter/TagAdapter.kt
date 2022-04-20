@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.elmenus.R
+import com.example.elmenus.databinding.ItemsBinding
+import com.example.elmenus.databinding.TagItemBinding
+import com.example.elmenus.domain.usecase.LoadPhoto
 import com.example.elmenus.presentation.home.TagItemUiState
 
 class TagAdapter(): PagingDataAdapter<TagItemUiState, TagAdapter.TagViewHolder>(Comparator) {
@@ -24,16 +27,9 @@ class TagAdapter(): PagingDataAdapter<TagItemUiState, TagAdapter.TagViewHolder>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagViewHolder {
+        val tagBinding = TagItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return  TagViewHolder(
-            LayoutInflater.from(
-                parent.context
-            ).inflate(
-                R.layout.tag_item,
-                parent,
-                false
-            )
-        )
+        return TagViewHolder(tagBinding)
     }
 
 
@@ -55,15 +51,14 @@ class TagAdapter(): PagingDataAdapter<TagItemUiState, TagAdapter.TagViewHolder>(
     }
 
 
-    inner class TagViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    inner class TagViewHolder(private val tagBinding: TagItemBinding): RecyclerView.ViewHolder(tagBinding.root)
     {
-        var textName=itemView.findViewById<TextView>(R.id.tagName)
-        var tagImage=itemView.findViewById<ImageView>(R.id.tagImage)
-        var tagCard=itemView.findViewById<CardView>(R.id.tagCard)
         fun bind(userItemUiState: TagItemUiState) {
-            textName.text=userItemUiState.getName()
-            Glide.with(itemView.context).load(userItemUiState.getImageUrl()).into(tagImage)
-            tagCard.setOnClickListener {
+            tagBinding.tagName.text=userItemUiState.getName()
+            val loadPhoto = LoadPhoto()
+            loadPhoto.invoke(tagBinding.tagImage,userItemUiState.getImageUrl(),itemView.context)
+
+            tagBinding.tagCard.setOnClickListener {
                 mListener?.onTagClicked(userItemUiState.getName());
             }
         }

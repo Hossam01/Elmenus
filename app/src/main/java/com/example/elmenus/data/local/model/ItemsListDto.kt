@@ -4,15 +4,15 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 data class ItemListDto(
-	val id: Int,
-	val name: String,
 	val items: List<ItemDto>
 )
 
+@Entity(tableName = "Items")
 data class ItemDto(
 	val photoUrl: String,
 	val name: String,
 	val description: String,
+	@PrimaryKey
 	val id: Int
 )
 

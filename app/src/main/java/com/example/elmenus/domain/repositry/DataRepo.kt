@@ -1,6 +1,7 @@
 package com.example.elmenus.domain.repositry
 
 import androidx.paging.PagingData
+import com.example.elmenus.data.local.model.ItemDto
 import com.example.elmenus.data.local.model.TagModel
 import com.example.elmenus.data.remote.dto.ItemListDto
 import com.example.elmenus.data.remote.dto.TagDto
@@ -16,5 +17,5 @@ interface DataRepo {
 
     suspend fun getItemsData(name: String): Response<ItemListDto>
 
-
+    suspend fun addAllItems(list: List<ItemDto>)
 }

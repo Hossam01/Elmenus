@@ -35,7 +35,7 @@ class HomeFragment: BaseFragment(),TagAdapter.AdapterListener {
 
         adapter.mListener=this
         lifecycleScope.launch {
-            mainModel.localTags.collect {
+            mainModel.userItemsUiStates().collect {
                     it->adapter.submitData(it)
             }
         }
