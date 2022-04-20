@@ -10,19 +10,16 @@ import com.example.elmenus.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.PagingDataAdapter
 import com.example.elmenus.databinding.HomeFragmentBinding
 import com.example.elmenus.presentation.home.adapter.ItemAdapter
 import com.example.elmenus.presentation.home.adapter.TagAdapter
 import com.example.elmenus.util.Status
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import okhttp3.internal.notify
-import okhttp3.internal.notifyAll
 
 
 @AndroidEntryPoint
-class HomeFragment: BaseFragment(),TagAdapter.AdapterListener {
+class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
 
     private val mainModel: HomeViewModel by viewModels()
 
@@ -67,7 +64,6 @@ class HomeFragment: BaseFragment(),TagAdapter.AdapterListener {
 
     override fun onTagClicked(name: String) {
         mainModel.getDataItem(name)
-
     }
 
 }

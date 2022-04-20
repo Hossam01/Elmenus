@@ -1,10 +1,12 @@
 package com.example.elmenus.presentation.home.adapter
 
 import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -57,8 +59,22 @@ class ItemAdapter :
             itemBinding.itemDescription.text=itemDto.description
             val loadPhoto = LoadPhoto()
             loadPhoto.invoke(itemBinding.itemImage,itemDto.photoUrl,itemView.context)
+            itemBinding.itemCard.setOnClickListener {
+                mListener?.onItemClicked(itemDto)
+                var bundle=Bundle()
+                bundle.putParcelable("item",itemDto)
+                Navigation.findNavController(itemBinding.root).navigate(R.id.action_homefragment_to_detailFragment,
+                bundle)
+
+
+            }
         }
     }
 
+    var mListener: ItemAdapterListener? = null
+
+    interface ItemAdapterListener {
+        fun onItemClicked(item: ItemDto)
+    }
 
 }

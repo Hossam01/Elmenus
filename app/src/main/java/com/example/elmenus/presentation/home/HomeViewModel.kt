@@ -7,10 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.example.elmenus.data.local.model.ItemModel
-import com.example.elmenus.data.remote.dto.ItemDto
 import com.example.elmenus.data.remote.dto.ItemListDto
-import com.example.elmenus.data.remote.dto.TagDto
 import com.example.elmenus.data.repository.DataRepoImpl
 import com.example.elmenus.util.Resource
 import com.example.elmenus.util.helper.NetworkStatusHelper
@@ -24,8 +21,6 @@ class HomeViewModel @ViewModelInject
  constructor(private val dataRepo: DataRepoImpl,private val networkHelper: NetworkStatusHelper) : ViewModel(){
 
     private val itemDataList = MutableStateFlow<Resource<ItemListDto>>(Resource.loading(null))
-    var list=mutableListOf<ItemModel>()
-    val mutableListItem = mutableListOf<ItemDto>()
 
     fun getItemDataList()=itemDataList
 
@@ -37,10 +32,7 @@ class HomeViewModel @ViewModelInject
             dataRepo.getItemsData(name).let {
                 if (it.isSuccessful) {
                     itemDataList.emit(Resource.success(it.body()))
-                    for (items in it.body()!!.items) {
-                        list.add(ItemModel(items.photoUrl, items.name, items.description, items.id))
-                    }
-                    dataRepo.addAllItems(list)
+                    it.body()?.let { it1 -> dataRepo.addAllItems(it1.items) }
                 } else {
                     itemDataList.emit(Resource.error(it.errorBody().toString(), null))
                 }
@@ -50,14 +42,8 @@ class HomeViewModel @ViewModelInject
             dataRepo.getitem(name).let {
              if(it.size>0)
              {
-                 mutableListItem.clear()
-                 for (item in it)
-                 {
-                     mutableListItem.add(ItemDto(item.photoUrl,item.name,item.description,item.id))
-                 }
                  itemDataList.emit(Resource.loading(null))
-
-                 itemDataList.emit(Resource.success(ItemListDto(mutableListItem)))
+                 itemDataList.emit(Resource.success(ItemListDto(it)))
              }
          }
         }
@@ -78,7 +64,7 @@ class HomeViewModel @ViewModelInject
             return dataRepo.getlocalTags()
                 .map {
                         pagingData->pagingData.map {
-                        tagModel -> TagItemUiState(TagDto(tagModel.photoURL,tagModel.tagName))
+                        tagModel -> TagItemUiState(tagModel)
                 }
                 }.cachedIn(viewModelScope)
         }

@@ -1,6 +1,8 @@
 package com.example.elmenus.data.remote.dto
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -10,9 +12,11 @@ data class ItemListDto(
 )
 
 @Parcelize
+@Entity(tableName = "Items")
 data class ItemDto(
 	@field:SerializedName("photoUrl")
 	val photoUrl: String,
+	@PrimaryKey
 	@field:SerializedName("name")
 	val name: String,
 	@field:SerializedName("description")

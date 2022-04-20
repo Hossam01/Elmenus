@@ -1,11 +1,8 @@
 package com.example.elmenus.data.paging
 
-import androidx.paging.LoadType
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.elmenus.data.local.AppDao
-import com.example.elmenus.data.local.model.ItemModel
-import com.example.elmenus.data.local.model.TagModel
 import com.example.elmenus.data.remote.dto.TagDto
 import com.example.elmenus.data.remote.webservice.WebService
 
@@ -14,18 +11,14 @@ class TagsPagingSource(
     private val dao: AppDao
     ) : PagingSource<Int, TagDto>() {
 
-
-    lateinit var list:List<TagModel>
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TagDto> {
         val page = params.key ?: STARTING_PAGE_INDEX
         return try {
             val response = service.listTags(page)
             response.body()?.let {
-                for (tags in it.tags) {
-                     list = listOf(TagModel(page,tags.tagName,tags.photoURL))
-                    dao.insertAll(list)
-                }
+
+                dao.insertAll(it.tags)
+
 
             }
             LoadResult.Page(
