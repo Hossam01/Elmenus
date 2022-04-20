@@ -12,7 +12,9 @@ interface DataRepo {
 
     fun getTags(): Flow<PagingData<TagDto>>
 
+    fun getlocalTags(): Flow<PagingData<TagModel>>
+
     suspend fun getItemsData(name: String): Response<ItemListDto>
 
-    suspend fun saveTags(tags:List<TagModel>)
+
 }

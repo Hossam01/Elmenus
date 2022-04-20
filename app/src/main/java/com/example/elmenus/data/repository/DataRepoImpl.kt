@@ -24,17 +24,26 @@ class DataRepoImpl @Inject constructor(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE
             ),
-            pagingSourceFactory = { TagsPagingSource(webService) }
+            pagingSourceFactory = { TagsPagingSource(webService,photoDao) }
         ).flow
     }
+
+
+    override fun getlocalTags(): Flow<PagingData<TagModel>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE
+            ),
+            pagingSourceFactory = { photoDao.getAllTags() }
+        ).flow
+    }
+
 
     override suspend fun getItemsData(name: String): Response<ItemListDto> {
         return webService.listItemsByTagName(name)
     }
 
-    override suspend fun saveTags(tags: List<TagModel>) {
-        photoDao.insertAll(tags)
-    }
+
 
     companion object {
         const val NETWORK_PAGE_SIZE = 100

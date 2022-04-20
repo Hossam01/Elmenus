@@ -9,7 +9,7 @@ import com.example.elmenus.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.elmenus.databinding.ActivityMainBinding
+import androidx.paging.PagingDataAdapter
 import com.example.elmenus.databinding.HomeFragmentBinding
 import com.example.elmenus.presentation.home.adapter.ItemAdapter
 import com.example.elmenus.presentation.home.adapter.TagAdapter
@@ -35,10 +35,12 @@ class HomeFragment: BaseFragment(),TagAdapter.AdapterListener {
 
         adapter.mListener=this
         lifecycleScope.launch {
-            mainModel.userItemsUiStates.collect {
+            mainModel.localTags.collect {
                     it->adapter.submitData(it)
             }
         }
+
+
         binding.rvTagslist.adapter=adapter
         binding.rvItemlist.adapter=adapteritem
         lifecycleScope.launchWhenStarted {
@@ -61,6 +63,7 @@ class HomeFragment: BaseFragment(),TagAdapter.AdapterListener {
 
     override fun onTagClicked(name: String) {
         mainModel.getDataItem(name)
+
     }
 
 }

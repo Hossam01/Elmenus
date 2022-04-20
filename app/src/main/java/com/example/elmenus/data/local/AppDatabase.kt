@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.elmenus.data.local.model.ItemListDto
 import com.example.elmenus.data.local.model.TagModel
 
-@Database(entities = [TagModel::class], version = 1, exportSchema = false)
+@Database(entities = [TagModel::class], version = 1)
 abstract class AppDatabase : RoomDatabase(){
     abstract fun dao(): AppDao
 }

@@ -37,7 +37,9 @@ class TagAdapter(): PagingDataAdapter<TagItemUiState, TagAdapter.TagViewHolder>(
     }
 
 
-     object Comparator : DiffUtil.ItemCallback<TagItemUiState>() {
+
+
+    object Comparator : DiffUtil.ItemCallback<TagItemUiState>() {
         override fun areItemsTheSame(oldItem: TagItemUiState, newItem: TagItemUiState): Boolean {
             return oldItem.getName() == newItem.getName()
         }

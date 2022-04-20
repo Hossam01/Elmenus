@@ -10,6 +10,7 @@ data class TagsListDto(
 
 @Entity(tableName = "Tags")
 data class TagModel(
+	val id:Int,
 	@PrimaryKey
 	val tagName: String,
 	val photoURL: String
