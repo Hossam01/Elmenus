@@ -1,6 +1,7 @@
 package com.example.elmenus.presentation.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,8 @@ import com.example.elmenus.presentation.home.adapter.TagAdapter
 import com.example.elmenus.util.Status
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import okhttp3.internal.notify
+import okhttp3.internal.notifyAll
 
 
 @AndroidEntryPoint
@@ -47,7 +50,9 @@ class HomeFragment: BaseFragment(),TagAdapter.AdapterListener {
             mainModel.getItemDataList().collect {
                 when (it.status) {
                     Status.OK -> {
+                        Log.d("TAG", "onCreateView:")
                         adapteritem.submitList(it.results!!.items)
+                        adapteritem.notifyDataSetChanged()
                     }
                     Status.ERROR->{
                         Toast.makeText(requireContext(),it.message, Toast.LENGTH_SHORT).show()
@@ -56,7 +61,6 @@ class HomeFragment: BaseFragment(),TagAdapter.AdapterListener {
 
             }
         }
-
 
         return binding.root
     }

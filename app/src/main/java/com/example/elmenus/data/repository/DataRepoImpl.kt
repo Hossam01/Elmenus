@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.elmenus.data.local.AppDao
-import com.example.elmenus.data.local.model.ItemDto
+import com.example.elmenus.data.local.model.ItemModel
 import com.example.elmenus.data.local.model.TagModel
 import com.example.elmenus.data.paging.TagsPagingSource
 import com.example.elmenus.data.remote.dto.ItemListDto
@@ -44,8 +44,12 @@ class DataRepoImpl @Inject constructor(
         return webService.listItemsByTagName(name)
     }
 
-    override suspend fun addAllItems(list: List<ItemDto>) {
+    override suspend fun addAllItems(list: List<ItemModel>) {
         photoDao.insertAllitem(list)
+    }
+
+    override suspend fun getitem(name: String): List<ItemModel> {
+       return photoDao.getitems(name)
     }
 
     companion object {

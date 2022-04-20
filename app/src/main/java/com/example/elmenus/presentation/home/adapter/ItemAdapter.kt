@@ -22,7 +22,7 @@ class ItemAdapter :
 
     private val diffCallback = object : DiffUtil.ItemCallback<ItemDto>(){
         override fun areItemsTheSame(oldItem: ItemDto, newItem: ItemDto): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(oldItem: ItemDto, newItem: ItemDto): Boolean {

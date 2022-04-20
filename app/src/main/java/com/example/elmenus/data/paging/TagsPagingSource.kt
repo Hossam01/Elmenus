@@ -4,7 +4,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.elmenus.data.local.AppDao
-import com.example.elmenus.data.local.model.ItemDto
+import com.example.elmenus.data.local.model.ItemModel
 import com.example.elmenus.data.local.model.TagModel
 import com.example.elmenus.data.remote.dto.TagDto
 import com.example.elmenus.data.remote.webservice.WebService
@@ -26,6 +26,7 @@ class TagsPagingSource(
                      list = listOf(TagModel(page,tags.tagName,tags.photoURL))
                     dao.insertAll(list)
                 }
+
             }
             LoadResult.Page(
                 data = response.body()!!.tags,
