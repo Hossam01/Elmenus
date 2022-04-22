@@ -22,6 +22,7 @@ import kotlinx.coroutines.launch
 class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
 
     private val mainModel: HomeViewModel by viewModels()
+    lateinit var adapter: TagAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,40 +31,40 @@ class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
     ): View? {
         val binding = HomeFragmentBinding.inflate(layoutInflater)
 
-        val adapter= TagAdapter()
+        adapter = TagAdapter()
         val adapteritem= ItemAdapter()
+        binding.rvTagslist.adapter=adapter
+        binding.rvItemlist.adapter=adapteritem
+        postponeEnterTransition()
+        binding.rvItemlist.post { startPostponedEnterTransition() }
 
         adapter.mListener=this
+
         lifecycleScope.launch {
             mainModel.userItemsUiStates().collect {
-                    it->adapter.submitData(it)
+                adapter.submitData(it)
             }
         }
 
-
-        binding.rvTagslist.adapter=adapter
-        binding.rvItemlist.adapter=adapteritem
         lifecycleScope.launchWhenStarted {
             mainModel.getItemDataList().collect {
                 when (it.status) {
                     Status.OK -> {
-                        Log.d("TAG", "onCreateView:")
                         adapteritem.submitList(it.results!!.items)
                         adapteritem.notifyDataSetChanged()
+                        binding.selectTag.visibility=View.GONE
                     }
                     Status.ERROR->{
                         Toast.makeText(requireContext(),it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
-
             }
         }
-
         return binding.root
     }
-
     override fun onTagClicked(name: String) {
         mainModel.getDataItem(name)
+        Log.d("TAG121", "onCreateView: "+adapter.snapshot().items.size)
     }
 
 }

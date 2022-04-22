@@ -25,7 +25,6 @@ class TagAdapter(): PagingDataAdapter<TagItemUiState, TagAdapter.TagViewHolder>(
         return TagViewHolder(tagBinding)
     }
 
-
     object Comparator : DiffUtil.ItemCallback<TagItemUiState>() {
         override fun areItemsTheSame(oldItem: TagItemUiState, newItem: TagItemUiState): Boolean {
             return oldItem.getName() == newItem.getName()
@@ -40,7 +39,6 @@ class TagAdapter(): PagingDataAdapter<TagItemUiState, TagAdapter.TagViewHolder>(
         }
 
     }
-
 
     inner class TagViewHolder(private val tagBinding: TagItemBinding): RecyclerView.ViewHolder(tagBinding.root)
     {

@@ -24,7 +24,6 @@ class HomeViewModel @ViewModelInject
 
     fun getItemDataList()=itemDataList
 
-
     fun getDataItem(name:String) = viewModelScope.launch {
 
         if (networkHelper.isNetworkConnected()) {

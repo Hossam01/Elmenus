@@ -36,6 +36,16 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:id="@+id/selectTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/selectTag"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvItemlist"
             android:layout_width="match_parent"

@@ -11,15 +11,13 @@ class TagsPagingSource(
     private val dao: AppDao
     ) : PagingSource<Int, TagDto>() {
 
+private lateinit var listOfItems:List<TagDto>
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TagDto> {
         val page = params.key ?: STARTING_PAGE_INDEX
         return try {
             val response = service.listTags(page)
             response.body()?.let {
-
                 dao.insertAll(it.tags)
-
-
             }
             LoadResult.Page(
                 data = response.body()!!.tags,
@@ -38,6 +36,7 @@ class TagsPagingSource(
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
     }
+
 
     companion object {
         private const val STARTING_PAGE_INDEX = 1

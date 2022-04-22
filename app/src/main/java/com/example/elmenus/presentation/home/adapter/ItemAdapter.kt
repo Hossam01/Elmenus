@@ -1,5 +1,6 @@
 package com.example.elmenus.presentation.home.adapter
 
+import android.app.Activity
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +17,13 @@ import com.example.elmenus.data.remote.dto.ItemDto
 import com.example.elmenus.databinding.ItemsBinding
 import com.example.elmenus.domain.usecase.LoadPhoto
 import com.example.elmenus.domain.usecase.LoadPhotoUseCase
+import androidx.core.view.ViewCompat
+
+import com.example.elmenus.presentation.MainActivity
+
+import androidx.core.app.ActivityOptionsCompat
+import androidx.navigation.fragment.FragmentNavigatorExtras
+
 
 class ItemAdapter :
     RecyclerView.Adapter<ItemAdapter.ItemHolder>() {
@@ -61,10 +69,13 @@ class ItemAdapter :
             loadPhoto.invoke(itemBinding.itemImage,itemDto.photoUrl,itemView.context)
             itemBinding.itemCard.setOnClickListener {
                 mListener?.onItemClicked(itemDto)
+                val extras = FragmentNavigatorExtras(
+                    itemBinding.itemImage to "imageView"
+                )
                 var bundle=Bundle()
                 bundle.putParcelable("item",itemDto)
                 Navigation.findNavController(itemBinding.root).navigate(R.id.action_homefragment_to_detailFragment,
-                bundle)
+                bundle,null,extras)
 
 
             }

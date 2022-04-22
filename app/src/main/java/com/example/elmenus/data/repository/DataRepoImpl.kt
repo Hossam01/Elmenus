@@ -18,13 +18,16 @@ class DataRepoImpl @Inject constructor(
     val webService: WebService,
     private val photoDao: AppDao
     ) : DataRepo {
-
+lateinit var tagsPagingSource: TagsPagingSource
     override fun getTags(): Flow<PagingData<TagDto>> {
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE
             ),
-            pagingSourceFactory = { TagsPagingSource(webService,photoDao) }
+            pagingSourceFactory = {
+                tagsPagingSource= TagsPagingSource(webService,photoDao)
+                tagsPagingSource
+            }
         ).flow
     }
 
