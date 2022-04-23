@@ -22,7 +22,7 @@ The project uses Clean architecture as structure pattern consisting of the layer
 * Glide : an image loading library for Android backed by Kotlin Coroutines
 * Navigation : Android’s components archtotucre to the interactions that allow users to navigate across, into, and back out from the different pieces of content within app 
 
- #BuildSrc
+# BuildSrc
 
 
-*BuildSrc : use BuildSrc for fast Building in android
+* BuildSrc : use BuildSrc for fast Building in android
