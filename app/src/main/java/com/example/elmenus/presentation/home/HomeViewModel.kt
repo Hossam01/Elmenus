@@ -49,7 +49,6 @@ class HomeViewModel @ViewModelInject
     }
 
     fun userItemsUiStates(): Flow<PagingData<TagItemUiState>> {
-        Log.d("TAG", "userItemsUiStates: "+networkHelper.isNetworkConnected())
         if (networkHelper.isNetworkConnected()) {
             return dataRepo.getTags()
                 .map { pagingData ->

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.NonNull
 import com.example.elmenus.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
@@ -22,6 +23,8 @@ import kotlinx.coroutines.launch
 class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
 
     private val mainModel: HomeViewModel by viewModels()
+    lateinit var binding: HomeFragmentBinding
+
     lateinit var tagAdapter: TagAdapter
     lateinit var adapteritem: ItemAdapter
 
@@ -30,39 +33,48 @@ class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = HomeFragmentBinding.inflate(layoutInflater)
+        binding = HomeFragmentBinding.inflate(layoutInflater)
 
-        tagAdapter = TagAdapter()
-        adapteritem= ItemAdapter()
-        binding.rvTagslist.adapter=tagAdapter
-        binding.rvItemlist.adapter=adapteritem
+        assignAdapter()
+        getItemsforTagName()
+
         postponeEnterTransition()
         binding.rvItemlist.post { startPostponedEnterTransition() }
 
         tagAdapter.mListener=this
-
         lifecycleScope.launch {
             mainModel.userItemsUiStates().collect {
                 tagAdapter.submitData(it)
             }
         }
 
+        return binding.root
+    }
+
+    private fun getItemsforTagName() {
         lifecycleScope.launchWhenStarted {
             mainModel.getItemDataList().collect {
                 when (it.status) {
                     Status.OK -> {
                         adapteritem.submitList(it.results!!.items)
                         adapteritem.notifyDataSetChanged()
-                        binding.selectTag.visibility=View.GONE
+                        binding.selectTag.visibility = View.GONE
                     }
-                    Status.ERROR->{
-                        Toast.makeText(requireContext(),it.message, Toast.LENGTH_SHORT).show()
+                    Status.ERROR -> {
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
-        return binding.root
     }
+
+    private fun assignAdapter() {
+        tagAdapter = TagAdapter()
+        adapteritem = ItemAdapter()
+        binding.rvTagslist.adapter = tagAdapter
+        binding.rvItemlist.adapter = adapteritem
+    }
+
     override fun onTagClicked(name: String) {
         mainModel.getDataItem(name)
         Log.d("TAG121", "onCreateView: "+tagAdapter.snapshot().items.size)
