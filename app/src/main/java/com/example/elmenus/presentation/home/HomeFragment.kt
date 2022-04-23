@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.NonNull
 import com.example.elmenus.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
@@ -55,13 +54,18 @@ class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
         lifecycleScope.launchWhenStarted {
             mainModel.getItemDataList().collect {
                 when (it.status) {
+                    Status.LOADING-> {
+                        binding.shimmerViewContainer.visibility = View.VISIBLE
+                    }
                     Status.OK -> {
                         adapteritem.submitList(it.results!!.items)
-                        adapteritem.notifyDataSetChanged()
-                        binding.selectTag.visibility = View.GONE
+                        binding.shimmerViewContainer.visibility = View.GONE
+
                     }
                     Status.ERROR -> {
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        binding.shimmerViewContainer.visibility = View.GONE
+
                     }
                 }
             }

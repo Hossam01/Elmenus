@@ -106,14 +106,13 @@ dependencies {
     implementation Deps.navigation
     implementation Deps.navigationUI
 
-    implementation "androidx.room:room-ktx:2.3.0"
+    implementation Deps.roomktx
 //For runBlockingTest, CoroutineDispatcher etc.
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
 //For InstantTaskExecutorRule
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-
-
+    testImplementation Deps.testCore
+    androidTestImplementation Deps.testunit
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
     implementation Deps.navigation
     implementation Deps.navigationUI

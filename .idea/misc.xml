@@ -23,12 +23,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Elmenus/Elmenus/app/src/main/res/layout/detail_fragment.xml" value="0.1603336422613531" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21025641025641026" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21025641025641026" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/drawable/ic_launcher_logo_background.xml" value="0.1" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/drawable/icon_background.xml" value="0.21025641025641026" />
         <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
         <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/layout/content_scrolling.xml" value="0.19739583333333333" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/layout/data_placeholder_layout.xml" value="0.19739583333333333" />
         <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/layout/detail_fragment.xml" value="0.15092592592592594" />
         <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/layout/home_fragment.xml" value="0.19739583333333333" />
         <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/layout/items.xml" value="0.15092592592592594" />
         <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/layout/tag_item.xml" value="0.19739583333333333" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21025641025641026" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/mipmap-anydpi-v26/ic_launcher_logo.xml" value="0.21025641025641026" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/mipmap-anydpi-v26/ic_launcher_logo_round.xml" value="0.21025641025641026" />
+        <entry key="..\:/testq/Elmenus/Elmenus/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21025641025641026" />
         <entry key="..\:/testq/Elmenus/app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
         <entry key="..\:/testq/Elmenus/app/src/main/res/layout/content_scrolling.xml" value="0.35208333333333336" />
         <entry key="..\:/testq/Elmenus/app/src/main/res/layout/detail_fragment.xml" value="0.35208333333333336" />

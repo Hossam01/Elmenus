@@ -22,6 +22,9 @@ class HomeViewModel @ViewModelInject
 
     private val itemDataList = MutableStateFlow<Resource<ItemListDto>>(Resource.loading(null))
 
+    init {
+        getDataItem("1 - Deserts")
+    }
     fun getItemDataList()=itemDataList
 
     fun getDataItem(name:String) = viewModelScope.launch {

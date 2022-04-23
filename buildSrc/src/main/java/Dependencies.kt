@@ -24,6 +24,9 @@ object Versions{
     val room="2.3.0"
     val paging="3.1.1"
     val navigation="2.3.5"
+    val rule="2.1.0"
+    val testunit="1.1.1"
+
 
 
 }
@@ -57,8 +60,10 @@ object Deps{
     val glide_compiler="com.github.bumptech.glide:compiler:${Versions.glide}"
     val leakcanary="com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}"
     val truth="com.google.truth:truth:${Versions.truth}"
-
     val room="androidx.room:room-runtime:${Versions.room}"
+    val roomktx="androidx.room:room-ktx:${Versions.room}"
+    val testCore="androidx.arch.core:core-testing:${Versions.rule}"
+    val testunit="androidx.test.ext:junit:${Versions.testunit}"
     val room_compiler="androidx.room:room-compiler:${Versions.room}"
     val paging="androidx.paging:paging-runtime-ktx:${Versions.paging}"
     val navigation="androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
