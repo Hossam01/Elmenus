@@ -11,8 +11,6 @@ The project uses Clean architecture as structure pattern consisting of the layer
 *  Presentation layer contains UI related and dependent Apis, it contains The, Components, Navigation, ViewModels, UI State, UI Intent, and framework Apis-Activities..etc
 
 
-![arc](https://user-images.githubusercontent.com/74387512/141706451-771f50c2-9e87-424b-9f16-c757c4fff30d.PNG)
-
 
 # Dependencies 
 
@@ -23,6 +21,5 @@ The project uses Clean architecture as structure pattern consisting of the layer
 * Hilt : a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection
 * Glide : an image loading library for Android backed by Kotlin Coroutines
 * Navigation : Android’s components archtotucre to the interactions that allow users to navigate across, into, and back out from the different pieces of content within app 
-* ConstraintLayout :  help place composables relative to others on the screen, and is an alternative to using multiple nested
 
  
