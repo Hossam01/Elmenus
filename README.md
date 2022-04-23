@@ -23,4 +23,6 @@ The project uses Clean architecture as structure pattern consisting of the layer
 * Navigation : Android’s components archtotucre to the interactions that allow users to navigate across, into, and back out from the different pieces of content within app 
 
  #BuildSrc
+
+
 *BuildSrc : use BuildSrc for fast Building in android
