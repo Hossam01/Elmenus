@@ -22,7 +22,8 @@ import kotlinx.coroutines.launch
 class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
 
     private val mainModel: HomeViewModel by viewModels()
-    lateinit var adapter: TagAdapter
+    lateinit var tagAdapter: TagAdapter
+    lateinit var adapteritem: ItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,18 +32,18 @@ class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
     ): View? {
         val binding = HomeFragmentBinding.inflate(layoutInflater)
 
-        adapter = TagAdapter()
-        val adapteritem= ItemAdapter()
-        binding.rvTagslist.adapter=adapter
+        tagAdapter = TagAdapter()
+        adapteritem= ItemAdapter()
+        binding.rvTagslist.adapter=tagAdapter
         binding.rvItemlist.adapter=adapteritem
         postponeEnterTransition()
         binding.rvItemlist.post { startPostponedEnterTransition() }
 
-        adapter.mListener=this
+        tagAdapter.mListener=this
 
         lifecycleScope.launch {
             mainModel.userItemsUiStates().collect {
-                adapter.submitData(it)
+                tagAdapter.submitData(it)
             }
         }
 
@@ -64,7 +65,7 @@ class HomeFragment: BaseFragment(),TagAdapter.TagAdapterListener {
     }
     override fun onTagClicked(name: String) {
         mainModel.getDataItem(name)
-        Log.d("TAG121", "onCreateView: "+adapter.snapshot().items.size)
+        Log.d("TAG121", "onCreateView: "+tagAdapter.snapshot().items.size)
     }
 
 }

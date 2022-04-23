@@ -1,5 +1,6 @@
 package com.example.elmenus.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
@@ -15,6 +16,9 @@ interface AppDao {
 
     @Query("SELECT * FROM tags order by id")
     fun getAllTags(): PagingSource<Int, TagDto>
+
+    @Query("SELECT * FROM tags order by id")
+    fun getAllTagsitem(): List<TagDto>
 
     @Query("DELETE FROM Tags")
     suspend fun deleteAll()

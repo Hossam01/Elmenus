@@ -18,6 +18,7 @@ android {
         versionName VersionConfig.versionName
         multiDexEnabled = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
     }
 
 
@@ -46,6 +47,8 @@ dependencies {
     implementation Deps.appcompat
     implementation Deps.material
     implementation Deps.constraintlayout
+    implementation 'androidx.test:runner:1.4.0'
+
     testImplementation Deps.junit
     androidTestImplementation Deps.junittestimple
     androidTestImplementation Deps.espresso
@@ -104,6 +107,12 @@ dependencies {
     implementation Deps.navigationUI
 
     implementation "androidx.room:room-ktx:2.3.0"
+//For runBlockingTest, CoroutineDispatcher etc.
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
+//For InstantTaskExecutorRule
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
 
 
     implementation Deps.navigation

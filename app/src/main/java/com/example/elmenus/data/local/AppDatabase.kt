@@ -8,4 +8,5 @@ import com.example.elmenus.data.remote.dto.TagDto
 @Database(entities = [TagDto::class, ItemDto::class], version = 4)
 abstract class AppDatabase : RoomDatabase(){
     abstract fun dao(): AppDao
+
 }
